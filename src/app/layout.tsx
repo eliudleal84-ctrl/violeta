@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Great_Vibes } from "next/font/google";
+import { Inter, Great_Vibes, Cinzel } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -10,6 +10,12 @@ const inter = Inter({
 const greatVibes = Great_Vibes({
   weight: "400",
   variable: "--font-cursive",
+  subsets: ["latin"],
+});
+
+const cinzel = Cinzel({
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-serif",
   subsets: ["latin"],
 });
 
@@ -26,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${inter.variable} ${greatVibes.variable} antialiased min-h-screen relative font-sans`}
+        className={`${inter.variable} ${greatVibes.variable} ${cinzel.variable} antialiased min-h-screen relative font-sans`}
       >
         {/* Dynamic Background Image Fullscreen Wrapper */}
         <div

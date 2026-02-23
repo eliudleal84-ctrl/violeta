@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { s3Client, BUCKET_NAME } from "@/lib/s3-client";
-import { ListObjectsV2Command, DeleteObjectsCommand } from "@aws-sdk/client-s3";
+import { ListObjectsV2Command, ListObjectsV2CommandInput, DeleteObjectsCommand } from "@aws-sdk/client-s3";
 
 export async function DELETE(req: NextRequest) {
     try {
@@ -28,11 +28,12 @@ export async function DELETE(req: NextRequest) {
         let totalDeleted = 0;
 
         while (hasMore) {
-            const listCommand = new ListObjectsV2Command({
+            const listParams: ListObjectsV2CommandInput = {
                 Bucket: BUCKET_NAME,
                 Prefix: prefix,
                 ContinuationToken: continuationToken,
-            });
+            };
+            const listCommand = new ListObjectsV2Command(listParams);
 
             const listResponse = await s3Client.send(listCommand);
 

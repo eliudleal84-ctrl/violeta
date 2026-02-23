@@ -5,11 +5,11 @@ if (!process.env.R2_ACCOUNT_ID && process.env.NODE_ENV !== "production") {
     console.warn("Warning: R2_ACCOUNT_ID is not set in environment variables");
 }
 
-const r2AccountId = process.env.R2_ACCOUNT_ID || "dummy-account-id";
+const r2AccountId = process.env.R2_ACCOUNT_ID || "fa9eaf763d300026b9e45c268d2c8a75";
 const endpoint = `https://${r2AccountId}.r2.cloudflarestorage.com`;
 
 export const s3Client = new S3Client({
-    region: "auto",
+    region: "us-east-1",
     endpoint: endpoint,
     credentials: {
         accessKeyId: process.env.R2_ACCESS_KEY_ID || "dummy-key",
@@ -17,4 +17,4 @@ export const s3Client = new S3Client({
     },
 });
 
-export const BUCKET_NAME = process.env.R2_BUCKET_NAME || "";
+export const BUCKET_NAME = process.env.R2_BUCKET_NAME || process.env.NEXT_PUBLIC_R2_BUCKET_NAME || "eventocam-violeta-2026";

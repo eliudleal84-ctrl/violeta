@@ -2,6 +2,7 @@
 
 import { X, Download, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useCallback } from "react";
+import ReactionBar from "./ReactionBar";
 
 interface ImageItem {
     key: string;
@@ -104,9 +105,12 @@ export default function ImageModal({ images, currentIndex, isOpen, onClose, onNa
                 />
             </div>
 
-            {/* Bottom Counter */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 rounded-full text-white/80 text-sm font-medium tracking-wide">
-                {currentIndex + 1} / {images.length}
+            {/* Bottom Controls */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 w-full px-4">
+                <ReactionBar imageKey={currentImage.key} />
+                <div className="px-4 py-2 bg-black/50 rounded-full text-white/80 text-sm font-medium tracking-wide">
+                    {currentIndex + 1} / {images.length}
+                </div>
             </div>
         </div>
     );

@@ -26,8 +26,8 @@ export default function EventHome({ params }: { params: { slug: string } }) {
 
                 {/* Navigation Menu Buttons */}
                 <div className="p-8 space-y-5">
-                    <p className="text-center text-white/90 text-sm font-medium mb-6 px-4">
-                        ¡Bienvenido a mi galería digital! Elige una opción para continuar.
+                    <p className="text-center text-white/90 text-sm font-medium mb-6 px-4 italic font-serif">
+                        "Cada foto guarda una emoción. Comparte la tuya y forma parte de mi historia."
                     </p>
 
                     <Link
